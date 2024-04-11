@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  apacheairflow:
+    image: apacheairflow
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: ["sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 __MACOSX\airflow-materials\airflow-section-3\mnt\airflow\dags\._forex_data_pipeline.py "]
+    ports:
+      - 5678:5678
